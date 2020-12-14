@@ -1,6 +1,8 @@
 # After changing this file, check it on:
 #   http://lint.travis-ci.org/
 language: python
+group: edge
+virt: lxd
 
 addons:
   apt:
@@ -25,9 +27,9 @@ env:
 
 matrix:
   include:
-    - python: 3.7
-      name: "ARM - Test Group 1"
-      arch: arm64
+    - python: 3.8
+      name: "AMD - Test Group 1"
+      arch: amd64
       dist: bionic
       env:
         - TESTMODE=fast
@@ -37,7 +39,7 @@ matrix:
         - NUMPYSPEC="numpy"
         - TEST_GROUP_COUNT=2
         - TEST_GROUP=1
-    - python: 3.7
+    - python: 3.8
       name: "ARM - Test Group 2"
       arch: arm64
       dist: bionic
@@ -49,14 +51,18 @@ matrix:
         - NUMPYSPEC="numpy"
         - TEST_GROUP_COUNT=2
         - TEST_GROUP=2
-    - python: 3.7
-      name: "Power PC"
-      os: linux
-      arch: ppc64le
+    - python: 3.8
+      name: "ARM - Test Group 3"
+      arch: arm64-graviton2
+      dist: bionic
       env:
         - TESTMODE=fast
         - COVERAGE=
-        - NUMPYSPEC="--upgrade numpy --no-cache-dir"
+        - USE_WHEEL=1
+        - PIP_NO_CACHE_DIR=off
+        - NUMPYSPEC="numpy"
+        - TEST_GROUP_COUNT=2
+        - TEST_GROUP=2
 
 cache:
   directories:
