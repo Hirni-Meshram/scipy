@@ -27,7 +27,7 @@ env:
 
 matrix:
   include:
-    - python: 3.8
+    - python: 3.6
       name: "AMD - Test Group 1"
       arch: amd64
       dist: bionic
@@ -39,7 +39,7 @@ matrix:
         - NUMPYSPEC="numpy"
         - TEST_GROUP_COUNT=2
         - TEST_GROUP=1
-    - python: 3.8
+    - python: 3.6
       name: "ARM - Test Group 2"
       arch: arm64
       dist: bionic
@@ -51,7 +51,7 @@ matrix:
         - NUMPYSPEC="numpy"
         - TEST_GROUP_COUNT=2
         - TEST_GROUP=2
-    - python: 3.8
+    - python: 3.6
       name: "ARM - Test Group 3"
       arch: arm64-graviton2
       dist: bionic
